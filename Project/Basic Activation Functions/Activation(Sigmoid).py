@@ -10,6 +10,16 @@ class activation_fnc:
         for i in range(self.n):
             result[0][i]=1/(1+math.exp(-(self.y[0][i])))
         return result
+class results:
+    def __init__(self,x,y):
+        self.x=x
+        self.y=y
+    def outcome(self):
+        outcomes=0
+        for i in range(1):
+            for j in range(3):
+                outcomes+=self.x[i][j]*self.y[i][j]
+        return outcomes
 user_input=input("Do you wanna try this is(yes/no): ")
 if user_input.lower()=='yes':
     count=1
@@ -38,3 +48,13 @@ if user_input.lower()=='yes':
                         y[i][0]+=x[0][j]*w[j][i]
                 act_fnc=activation_fnc(y,n)
                 result=act_fnc.Active()
+                W_y=np.zeros((1,3))
+                for i in range(3):
+                    w[0][i]=random.randint(-1,1)
+                Y_final=results(result,W_y)
+                output=Y_final.outcome()
+                output_final=1/(1+math.exp(-(output)))
+                Y_actual=random.randint(0,1)
+                loss_fnx=Y_actual-output_final
+                if loss_fnx>=0.1:
+                    pass                
