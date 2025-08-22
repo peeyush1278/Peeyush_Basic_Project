@@ -1,5 +1,15 @@
 import numpy as np
+import math
 import random
+class activation_fnc:
+    def __init__(self,y,n):
+        self.y=y
+        self.n=n
+    def Active(self):
+        result=np.zeros((1,self.n))
+        for i in range(self.n):
+            result[0][i]=1/(1+math.exp(-(self.y[0][i])))
+        return result
 user_input=input("Do you wanna try this is(yes/no): ")
 if user_input.lower()=='yes':
     count=1
@@ -26,3 +36,5 @@ if user_input.lower()=='yes':
                 for i in range(n):
                     for j in range(n):
                         y[i][0]+=x[0][j]*w[j][i]
+                act_fnc=activation_fnc(y,n)
+                result=act_fnc.Active()
