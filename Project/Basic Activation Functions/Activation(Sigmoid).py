@@ -1,4 +1,5 @@
 import numpy as np
+import random
 user_input=input("Do you wanna try this is(yes/no): ")
 if user_input.lower()=='yes':
     count=1
@@ -11,13 +12,11 @@ if user_input.lower()=='yes':
                 count+=1
                 print("input node are there: ", ends=(""))
                 n=input()
-                print(f"so you will have {n*3} weights")
-                print("enter the weights")
                 w=np.zeros((n,3))
                 for i in range(n):
-                    w[i][0]=int(input("Enter the weight: "))
-                    w[i][1]=int(input("Enter the weight: "))
-                    w[i][2]=int(input("Enter the weight: "))
+                    w[i][0]=random.randint(-1,1)
+                    w[i][1]=random.randint(-1,1)
+                    w[i][2]=random.randint(-1,1)
                 x=np.zeros((1,n))
                 for i in range(1):
                     x[i][0]=int(input("Enter the X value:"))                               
